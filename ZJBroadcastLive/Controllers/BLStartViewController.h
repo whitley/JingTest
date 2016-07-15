@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  BLStartViewController.h
 //  ZJBroadcastLive
 //
-//  Created by Weberson on 16/7/14.
+//  Created by ZhangJing on 16/7/15.
 //  Copyright © 2016年 zhangjing. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BLStartViewController : UIViewController
 
 @end
-

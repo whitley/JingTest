@@ -2,10 +2,13 @@
 //  AppDelegate.m
 //  ZJBroadcastLive
 //
-//  Created by Weberson on 16/7/14.
+//  Created by ZhangJing on 16/7/14.
 //  Copyright © 2016年 zhangjing. All rights reserved.
 //
 
+#import "BLStartViewController.h"
+#import "BLNavigationController.h"
+#import "BLLoginViewController.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -17,7 +20,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    BLStartViewController *startVC = [[BLStartViewController alloc] init];
+    self.window.rootViewController = startVC;
+    [self.window makeKeyAndVisible];
+    
+    [self performSelector:@selector(startLoginVC) withObject:nil afterDelay:1.5];
+    
     return YES;
+}
+
+
+- (void)startLoginVC{
+    BLLoginViewController * loginVC = [[BLLoginViewController alloc]init];
+    BLNavigationController * navigationVC = [[BLNavigationController alloc]initWithRootViewController:loginVC];
+    self.window.rootViewController = navigationVC;
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
+    
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

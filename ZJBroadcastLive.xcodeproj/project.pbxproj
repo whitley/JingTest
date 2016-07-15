@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4EEE90071D3747460076A484 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE90061D3747460076A484 /* main.m */; };
-		4EEE900A1D3747460076A484 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE90091D3747460076A484 /* AppDelegate.m */; };
-		4EEE900D1D3747460076A484 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE900C1D3747460076A484 /* ViewController.m */; };
+		4EEE900A1D3747460076A484 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE90091D3747460076A484 /* AppDelegate.mm */; };
 		4EEE90101D3747460076A484 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE900E1D3747460076A484 /* Main.storyboard */; };
 		4EEE90121D3747460076A484 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE90111D3747460076A484 /* Assets.xcassets */; };
 		4EEE90151D3747460076A484 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE90131D3747460076A484 /* LaunchScreen.storyboard */; };
 		4EEE90201D3747460076A484 /* ZJBroadcastLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE901F1D3747460076A484 /* ZJBroadcastLiveTests.m */; };
 		4EEE902B1D3747460076A484 /* ZJBroadcastLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE902A1D3747460076A484 /* ZJBroadcastLiveUITests.m */; };
+		4EF392CE1D38923300B18719 /* BLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392CD1D38923300B18719 /* BLBaseViewController.m */; };
+		4EF392D61D38BB3D00B18719 /* BLStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392D51D38BB3D00B18719 /* BLStartViewController.m */; };
+		4EF392DC1D38BF8D00B18719 /* LaunchImage-700-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392D81D38BF8D00B18719 /* LaunchImage-700-568h@2x.png */; };
+		4EF392DD1D38BF8D00B18719 /* LaunchImage-700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392D91D38BF8D00B18719 /* LaunchImage-700@2x.png */; };
+		4EF392DE1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392DA1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png */; };
+		4EF392DF1D38BF8D00B18719 /* LaunchImage-800-Portrait-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392DB1D38BF8D00B18719 /* LaunchImage-800-Portrait-736h@3x.png */; };
+		4EF392E21D38C36C00B18719 /* BLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392E11D38C36C00B18719 /* BLNavigationController.m */; };
+		4EF392E41D38C7D400B18719 /* navBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392E31D38C7D400B18719 /* navBackBtn@2x.png */; };
+		4EF392E71D38C84500B18719 /* BLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392E61D38C84500B18719 /* BLLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +46,7 @@
 		4EEE90021D3747460076A484 /* ZJBroadcastLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJBroadcastLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EEE90061D3747460076A484 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EEE90081D3747460076A484 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4EEE90091D3747460076A484 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4EEE900B1D3747460076A484 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4EEE900C1D3747460076A484 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4EEE90091D3747460076A484 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		4EEE900F1D3747460076A484 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EEE90111D3747460076A484 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EEE90141D3747460076A484 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +57,20 @@
 		4EEE90261D3747460076A484 /* ZJBroadcastLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJBroadcastLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EEE902A1D3747460076A484 /* ZJBroadcastLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJBroadcastLiveUITests.m; sourceTree = "<group>"; };
 		4EEE902C1D3747460076A484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF392CC1D38923300B18719 /* BLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLBaseViewController.h; sourceTree = "<group>"; };
+		4EF392CD1D38923300B18719 /* BLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLBaseViewController.m; sourceTree = "<group>"; };
+		4EF392D41D38BB3D00B18719 /* BLStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLStartViewController.h; sourceTree = "<group>"; };
+		4EF392D51D38BB3D00B18719 /* BLStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLStartViewController.m; sourceTree = "<group>"; };
+		4EF392D71D38BD5B00B18719 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
+		4EF392D81D38BF8D00B18719 /* LaunchImage-700-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-568h@2x.png"; sourceTree = "<group>"; };
+		4EF392D91D38BF8D00B18719 /* LaunchImage-700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700@2x.png"; sourceTree = "<group>"; };
+		4EF392DA1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-667h@2x.png"; sourceTree = "<group>"; };
+		4EF392DB1D38BF8D00B18719 /* LaunchImage-800-Portrait-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Portrait-736h@3x.png"; sourceTree = "<group>"; };
+		4EF392E01D38C36C00B18719 /* BLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNavigationController.h; sourceTree = "<group>"; };
+		4EF392E11D38C36C00B18719 /* BLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNavigationController.m; sourceTree = "<group>"; };
+		4EF392E31D38C7D400B18719 /* navBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackBtn@2x.png"; sourceTree = "<group>"; };
+		4EF392E51D38C84500B18719 /* BLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLLoginViewController.h; sourceTree = "<group>"; };
+		4EF392E61D38C84500B18719 /* BLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4EEE90041D3747460076A484 /* ZJBroadcastLive */,
+				4EF392C11D38907B00B18719 /* Framework */,
 				4EEE901E1D3747460076A484 /* ZJBroadcastLiveTests */,
 				4EEE90291D3747460076A484 /* ZJBroadcastLiveUITests */,
 				4EEE90031D3747460076A484 /* Products */,
@@ -102,13 +123,17 @@
 			isa = PBXGroup;
 			children = (
 				4EEE90081D3747460076A484 /* AppDelegate.h */,
-				4EEE90091D3747460076A484 /* AppDelegate.m */,
-				4EEE900B1D3747460076A484 /* ViewController.h */,
-				4EEE900C1D3747460076A484 /* ViewController.m */,
-				4EEE900E1D3747460076A484 /* Main.storyboard */,
+				4EEE90091D3747460076A484 /* AppDelegate.mm */,
+				4EF392C81D38914200B18719 /* Models */,
+				4EF392C41D38914200B18719 /* Controllers */,
+				4EF392CB1D38914200B18719 /* Views */,
+				4EF392C71D38914200B18719 /* Macro */,
+				4EF392CA1D38914200B18719 /* Utils */,
+				4EF392C31D38914200B18719 /* Category */,
+				4EF392C61D38914200B18719 /* Libs */,
+				4EF392C91D38914200B18719 /* Resource */,
+				4EF392C21D3890FA00B18719 /* Other */,
 				4EEE90111D3747460076A484 /* Assets.xcassets */,
-				4EEE90131D3747460076A484 /* LaunchScreen.storyboard */,
-				4EEE90161D3747460076A484 /* Info.plist */,
 				4EEE90051D3747460076A484 /* Supporting Files */,
 			);
 			path = ZJBroadcastLive;
@@ -117,6 +142,7 @@
 		4EEE90051D3747460076A484 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4EEE90161D3747460076A484 /* Info.plist */,
 				4EEE90061D3747460076A484 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +164,124 @@
 				4EEE902C1D3747460076A484 /* Info.plist */,
 			);
 			path = ZJBroadcastLiveUITests;
+			sourceTree = "<group>";
+		};
+		4EF392C11D38907B00B18719 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		4EF392C21D3890FA00B18719 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE900E1D3747460076A484 /* Main.storyboard */,
+				4EEE90131D3747460076A484 /* LaunchScreen.storyboard */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		4EF392C31D38914200B18719 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		4EF392C41D38914200B18719 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392C51D38914200B18719 /* Base */,
+				4EF392D01D38BA5100B18719 /* Login */,
+				4EF392E81D38C85400B18719 /* BLHome */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4EF392C51D38914200B18719 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392CC1D38923300B18719 /* BLBaseViewController.h */,
+				4EF392CD1D38923300B18719 /* BLBaseViewController.m */,
+				4EF392E01D38C36C00B18719 /* BLNavigationController.h */,
+				4EF392E11D38C36C00B18719 /* BLNavigationController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4EF392C61D38914200B18719 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		4EF392C71D38914200B18719 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392D71D38BD5B00B18719 /* UtilsMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		4EF392C81D38914200B18719 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4EF392C91D38914200B18719 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392CF1D38B7AA00B18719 /* Image */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4EF392CA1D38914200B18719 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4EF392CB1D38914200B18719 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4EF392CF1D38B7AA00B18719 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392D81D38BF8D00B18719 /* LaunchImage-700-568h@2x.png */,
+				4EF392D91D38BF8D00B18719 /* LaunchImage-700@2x.png */,
+				4EF392DA1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png */,
+				4EF392DB1D38BF8D00B18719 /* LaunchImage-800-Portrait-736h@3x.png */,
+				4EF392E31D38C7D400B18719 /* navBackBtn@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		4EF392D01D38BA5100B18719 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4EF392D41D38BB3D00B18719 /* BLStartViewController.h */,
+				4EF392D51D38BB3D00B18719 /* BLStartViewController.m */,
+				4EF392E51D38C84500B18719 /* BLLoginViewController.h */,
+				4EF392E61D38C84500B18719 /* BLLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		4EF392E81D38C85400B18719 /* BLHome */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BLHome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +346,7 @@
 		4EEE8FFA1D3747460076A484 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = BL;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zhangjing;
 				TargetAttributes = {
@@ -243,9 +388,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF392E41D38C7D400B18719 /* navBackBtn@2x.png in Resources */,
 				4EEE90151D3747460076A484 /* LaunchScreen.storyboard in Resources */,
+				4EF392DE1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png in Resources */,
 				4EEE90121D3747460076A484 /* Assets.xcassets in Resources */,
+				4EF392DD1D38BF8D00B18719 /* LaunchImage-700@2x.png in Resources */,
+				4EF392DC1D38BF8D00B18719 /* LaunchImage-700-568h@2x.png in Resources */,
 				4EEE90101D3747460076A484 /* Main.storyboard in Resources */,
+				4EF392DF1D38BF8D00B18719 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EEE900D1D3747460076A484 /* ViewController.m in Sources */,
-				4EEE900A1D3747460076A484 /* AppDelegate.m in Sources */,
+				4EF392E71D38C84500B18719 /* BLLoginViewController.m in Sources */,
+				4EEE900A1D3747460076A484 /* AppDelegate.mm in Sources */,
+				4EF392E21D38C36C00B18719 /* BLNavigationController.m in Sources */,
+				4EF392D61D38BB3D00B18719 /* BLStartViewController.m in Sources */,
+				4EF392CE1D38923300B18719 /* BLBaseViewController.m in Sources */,
 				4EEE90071D3747460076A484 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,9 +569,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZJBroadcastLive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cytx.ZJBroadcastLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -427,9 +583,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZJBroadcastLive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cytx.ZJBroadcastLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -498,6 +657,7 @@
 				4EEE90311D3747460076A484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EEE90321D3747460076A484 /* Build configuration list for PBXNativeTarget "ZJBroadcastLiveTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +666,7 @@
 				4EEE90341D3747460076A484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EEE90351D3747460076A484 /* Build configuration list for PBXNativeTarget "ZJBroadcastLiveUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +675,7 @@
 				4EEE90371D3747460076A484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
