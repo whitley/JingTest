@@ -23,6 +23,18 @@
 		4EF392E21D38C36C00B18719 /* BLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392E11D38C36C00B18719 /* BLNavigationController.m */; };
 		4EF392E41D38C7D400B18719 /* navBackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF392E31D38C7D400B18719 /* navBackBtn@2x.png */; };
 		4EF392E71D38C84500B18719 /* BLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF392E61D38C84500B18719 /* BLLoginViewController.m */; };
+		618979C01D3C743D00FD3752 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979BF1D3C743D00FD3752 /* AVFoundation.framework */; };
+		618979C21D3C744F00FD3752 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979C11D3C744F00FD3752 /* AudioToolbox.framework */; };
+		618979C41D3C746300FD3752 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979C31D3C746300FD3752 /* CoreMedia.framework */; };
+		618979C61D3C749C00FD3752 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979C51D3C749C00FD3752 /* OpenGLES.framework */; };
+		618979C81D3C74AA00FD3752 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979C71D3C74AA00FD3752 /* GLKit.framework */; };
+		618979CA1D3C79EF00FD3752 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979C91D3C79EF00FD3752 /* libiconv.2.dylib */; };
+		618979CC1D3C7A0700FD3752 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979CB1D3C7A0700FD3752 /* libz.1.dylib */; };
+		618979CE1D3C7A2C00FD3752 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979CD1D3C7A2C00FD3752 /* libicucore.A.dylib */; };
+		618979D11D3C7B0B00FD3752 /* RtSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 618979CF1D3C7B0B00FD3752 /* RtSDK.bundle */; };
+		618979D21D3C7B0B00FD3752 /* RtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979D01D3C7B0B00FD3752 /* RtSDK.framework */; };
+		618979D51D3C875900FD3752 /* BLUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 618979D41D3C875900FD3752 /* BLUserDefaults.m */; };
+		618979D81D3C8F7500FD3752 /* BLHomeBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +83,20 @@
 		4EF392E31D38C7D400B18719 /* navBackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBackBtn@2x.png"; sourceTree = "<group>"; };
 		4EF392E51D38C84500B18719 /* BLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLLoginViewController.h; sourceTree = "<group>"; };
 		4EF392E61D38C84500B18719 /* BLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLLoginViewController.m; sourceTree = "<group>"; };
+		618979BF1D3C743D00FD3752 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		618979C11D3C744F00FD3752 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		618979C31D3C746300FD3752 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		618979C51D3C749C00FD3752 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		618979C71D3C74AA00FD3752 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		618979C91D3C79EF00FD3752 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
+		618979CB1D3C7A0700FD3752 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
+		618979CD1D3C7A2C00FD3752 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = /usr/lib/libicucore.A.dylib; sourceTree = "<absolute>"; };
+		618979CF1D3C7B0B00FD3752 /* RtSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RtSDK.bundle; sourceTree = "<group>"; };
+		618979D01D3C7B0B00FD3752 /* RtSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RtSDK.framework; sourceTree = "<group>"; };
+		618979D31D3C875900FD3752 /* BLUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLUserDefaults.h; sourceTree = "<group>"; };
+		618979D41D3C875900FD3752 /* BLUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUserDefaults.m; sourceTree = "<group>"; };
+		618979D61D3C8F7500FD3752 /* BLHomeBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLHomeBLViewController.h; sourceTree = "<group>"; };
+		618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLHomeBLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +104,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618979D21D3C7B0B00FD3752 /* RtSDK.framework in Frameworks */,
+				618979CE1D3C7A2C00FD3752 /* libicucore.A.dylib in Frameworks */,
+				618979CC1D3C7A0700FD3752 /* libz.1.dylib in Frameworks */,
+				618979CA1D3C79EF00FD3752 /* libiconv.2.dylib in Frameworks */,
+				618979C81D3C74AA00FD3752 /* GLKit.framework in Frameworks */,
+				618979C61D3C749C00FD3752 /* OpenGLES.framework in Frameworks */,
+				618979C41D3C746300FD3752 /* CoreMedia.framework in Frameworks */,
+				618979C21D3C744F00FD3752 /* AudioToolbox.framework in Frameworks */,
+				618979C01D3C743D00FD3752 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +204,14 @@
 		4EF392C11D38907B00B18719 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				618979CD1D3C7A2C00FD3752 /* libicucore.A.dylib */,
+				618979CB1D3C7A0700FD3752 /* libz.1.dylib */,
+				618979C91D3C79EF00FD3752 /* libiconv.2.dylib */,
+				618979C71D3C74AA00FD3752 /* GLKit.framework */,
+				618979C51D3C749C00FD3752 /* OpenGLES.framework */,
+				618979C31D3C746300FD3752 /* CoreMedia.framework */,
+				618979C11D3C744F00FD3752 /* AudioToolbox.framework */,
+				618979BF1D3C743D00FD3752 /* AVFoundation.framework */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -213,6 +256,8 @@
 		4EF392C61D38914200B18719 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				618979CF1D3C7B0B00FD3752 /* RtSDK.bundle */,
+				618979D01D3C7B0B00FD3752 /* RtSDK.framework */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -243,6 +288,8 @@
 		4EF392CA1D38914200B18719 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				618979D31D3C875900FD3752 /* BLUserDefaults.h */,
+				618979D41D3C875900FD3752 /* BLUserDefaults.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -280,6 +327,8 @@
 		4EF392E81D38C85400B18719 /* BLHome */ = {
 			isa = PBXGroup;
 			children = (
+				618979D61D3C8F7500FD3752 /* BLHomeBLViewController.h */,
+				618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */,
 			);
 			name = BLHome;
 			sourceTree = "<group>";
@@ -389,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF392E41D38C7D400B18719 /* navBackBtn@2x.png in Resources */,
+				618979D11D3C7B0B00FD3752 /* RtSDK.bundle in Resources */,
 				4EEE90151D3747460076A484 /* LaunchScreen.storyboard in Resources */,
 				4EF392DE1D38BF8D00B18719 /* LaunchImage-800-667h@2x.png in Resources */,
 				4EEE90121D3747460076A484 /* Assets.xcassets in Resources */,
@@ -423,9 +473,11 @@
 				4EF392E71D38C84500B18719 /* BLLoginViewController.m in Sources */,
 				4EEE900A1D3747460076A484 /* AppDelegate.mm in Sources */,
 				4EF392E21D38C36C00B18719 /* BLNavigationController.m in Sources */,
+				618979D51D3C875900FD3752 /* BLUserDefaults.m in Sources */,
 				4EF392D61D38BB3D00B18719 /* BLStartViewController.m in Sources */,
 				4EF392CE1D38923300B18719 /* BLBaseViewController.m in Sources */,
 				4EEE90071D3747460076A484 /* main.m in Sources */,
+				618979D81D3C8F7500FD3752 /* BLHomeBLViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +620,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZJBroadcastLive/Libs",
+				);
 				INFOPLIST_FILE = ZJBroadcastLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -582,6 +640,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZJBroadcastLive/Libs",
+				);
 				INFOPLIST_FILE = ZJBroadcastLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
