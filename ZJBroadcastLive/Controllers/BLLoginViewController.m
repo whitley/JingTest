@@ -149,22 +149,15 @@
 
 - (void)clickWatchBLBtn:(UIButton *)btn{
     BLHomeBLViewController *homeBLVC = [[BLHomeBLViewController alloc]init];
-    homeBLVC.connectInfo = [GSConnectInfo new];
-    homeBLVC.connectInfo.domain = @"cytx.gensee.com";
-    homeBLVC.connectInfo.serviceType = GSBroadcastServiceTypeTraining;
-    homeBLVC.connectInfo.roomNumber = self.roomNumberTF.text;
-    homeBLVC.connectInfo.nickName = self.nickNameTF.text;
-    homeBLVC.connectInfo.watchPassword = self.watchPwdTF.text;
-    homeBLVC.connectInfo.oldVersion = YES;
+    GSConnectInfo *tempConnectInfo = [GSConnectInfo new];
+    tempConnectInfo.domain = @"cytx.gensee.com";
+    tempConnectInfo.serviceType = GSBroadcastServiceTypeTraining;
+    tempConnectInfo.roomNumber = self.roomNumberTF.text;
+    tempConnectInfo.nickName = self.nickNameTF.text;
+    tempConnectInfo.watchPassword = self.watchPwdTF.text;
+    tempConnectInfo.oldVersion = YES;
     
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.domain);
-    NSLog(@"xinxi == %ld",(long)homeBLVC.connectInfo.serviceType);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.roomNumber);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.nickName);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.watchPassword);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.webcastID);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.loginName);
-    NSLog(@"xinxi == %@",homeBLVC.connectInfo.loginPassword);
+    homeBLVC.connectInfo = tempConnectInfo;
     
     homeBLVC.isWatchBL = YES;
     [self.navigationController pushViewController:homeBLVC animated:YES];

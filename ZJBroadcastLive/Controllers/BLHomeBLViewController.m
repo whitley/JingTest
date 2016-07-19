@@ -53,6 +53,33 @@
     
     [self.view addSubview:self.videoView];
 
+    
+    
+    
+    
+    UIButton * videoBtn = [[UIButton alloc]initWithFrame:CGRectMake(50, 100, 100, 40)];
+    [videoBtn setTitle:@"接收视频" forState:UIControlStateNormal];
+    [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    videoBtn.backgroundColor = RGB(235, 145, 141);
+    [videoBtn addTarget:self action:@selector(clickVideoBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:videoBtn];
+}
+
+-(void)clickVideoBtn:(UIButton *)btn{
+    [self.broadcastManager displayVideo:self.userID];//接收视频
+//    [self.broadcastManager undisplayVideo:self.userID];//关闭视频
+    
+    //打开麦克风
+//    [self.broadcastManager activateSpeaker];
+//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+//    [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
+//                                    error:nil];
+//    [audioSession setActive:YES error:nil];
+    
+    //关闭麦克风
+//    [self.broadcastManager inactivateSpeaker];
+//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+//    [audioSession setActive:NO error:nil];
 }
 
 //初始化直播manager
@@ -64,14 +91,7 @@
     self.broadcastManager.desktopShareDelegate = self;
     self.broadcastManager.audioDelegate = self;
     
-    NSLog(@"xinxi == %@",self.connectInfo.domain);
-    NSLog(@"xinxi == %ld",(long)self.connectInfo.serviceType);
-    NSLog(@"xinxi == %@",self.connectInfo.roomNumber);
-    NSLog(@"xinxi == %@",self.connectInfo.nickName);
-    NSLog(@"xinxi == %@",self.connectInfo.watchPassword);
-    NSLog(@"xinxi == %@",self.connectInfo.webcastID);
-    NSLog(@"xinxi == %@",self.connectInfo.loginName);
-    NSLog(@"xinxi == %@",self.connectInfo.loginPassword);
+    
     if (![_broadcastManager connectBroadcastWithConnectInfo:self.connectInfo]) {
         
         
@@ -121,17 +141,17 @@
             break;
             
         case GSBroadcastConnectResultInitFailed:
-            
+            break;
         case GSBroadcastConnectResultJoinCastPasswordError:
-            
+            break;
         case GSBroadcastConnectResultWebcastIDInvalid:
-            
+            break;
         case GSBroadcastConnectResultRoleOrDomainError:
-            
+            break;
         case GSBroadcastConnectResultLoginFailed:
-            
+            break;
         case GSBroadcastConnectResultNetworkError:
-            
+            break;
         case GSBroadcastConnectResultWebcastIDNotFound:
         {
 //            [self.progressHUD hide:YES];
@@ -359,6 +379,36 @@
         NSLog(@"音频加载失败");
     }
 }
+
+
+#pragma mark ---------------------------------------
+#pragma mark -- GSBroadcastDocDelegate --
+
+// 文档模块连接代理
+- (void)broadcastManager:(GSBroadcastManager*)manager didReceiveDocModuleInitResult:(BOOL)result
+{
+}
+
+// 文档打开代理
+- (void)broadcastManagerDidOpenDocument:(GSBroadcastManager *)manager
+{
+    
+}
+
+// 文档关闭代理
+- (void)broadcastManagerDidCloseDocument:(GSBroadcastManager *)manager
+{
+    
+}
+
+// 文档切换代理
+- (void)broadcastManagerDidSlideDocument:(GSBroadcastManager*)manager
+{
+    
+}
+
+
+
 
 #pragma mark ----------------------------------------
 #pragma mark -- screenFrame method --
