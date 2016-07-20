@@ -35,6 +35,12 @@
 		618979D21D3C7B0B00FD3752 /* RtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618979D01D3C7B0B00FD3752 /* RtSDK.framework */; };
 		618979D51D3C875900FD3752 /* BLUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 618979D41D3C875900FD3752 /* BLUserDefaults.m */; };
 		618979D81D3C8F7500FD3752 /* BLHomeBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */; };
+		61F91D701D3F531200228185 /* BLChatMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D6F1D3F531200228185 /* BLChatMessageInfo.m */; };
+		61F91D731D3F56FB00228185 /* BLChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D721D3F56FB00228185 /* BLChatTableViewCell.m */; };
+		61F91D851D3F7C1B00228185 /* GHEmojiCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D761D3F7C1B00228185 /* GHEmojiCollectionView.m */; };
+		61F91D861D3F7C1B00228185 /* GHEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D781D3F7C1B00228185 /* GHEmojiView.m */; };
+		61F91D871D3F7C1B00228185 /* GHInputToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D7A1D3F7C1B00228185 /* GHInputToolView.m */; };
+		61F91D8F1D3F92EE00228185 /* BLInputToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F91D8E1D3F92EE00228185 /* BLInputToolView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +103,18 @@
 		618979D41D3C875900FD3752 /* BLUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUserDefaults.m; sourceTree = "<group>"; };
 		618979D61D3C8F7500FD3752 /* BLHomeBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLHomeBLViewController.h; sourceTree = "<group>"; };
 		618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLHomeBLViewController.m; sourceTree = "<group>"; };
+		61F91D6E1D3F531200228185 /* BLChatMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLChatMessageInfo.h; sourceTree = "<group>"; };
+		61F91D6F1D3F531200228185 /* BLChatMessageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChatMessageInfo.m; sourceTree = "<group>"; };
+		61F91D711D3F56FB00228185 /* BLChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLChatTableViewCell.h; sourceTree = "<group>"; };
+		61F91D721D3F56FB00228185 /* BLChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChatTableViewCell.m; sourceTree = "<group>"; };
+		61F91D751D3F7C1B00228185 /* GHEmojiCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHEmojiCollectionView.h; sourceTree = "<group>"; };
+		61F91D761D3F7C1B00228185 /* GHEmojiCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHEmojiCollectionView.m; sourceTree = "<group>"; };
+		61F91D771D3F7C1B00228185 /* GHEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHEmojiView.h; sourceTree = "<group>"; };
+		61F91D781D3F7C1B00228185 /* GHEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHEmojiView.m; sourceTree = "<group>"; };
+		61F91D791D3F7C1B00228185 /* GHInputToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHInputToolView.h; sourceTree = "<group>"; };
+		61F91D7A1D3F7C1B00228185 /* GHInputToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHInputToolView.m; sourceTree = "<group>"; };
+		61F91D8D1D3F92EE00228185 /* BLInputToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLInputToolView.h; sourceTree = "<group>"; };
+		61F91D8E1D3F92EE00228185 /* BLInputToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLInputToolView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +291,8 @@
 		4EF392C81D38914200B18719 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				61F91D6E1D3F531200228185 /* BLChatMessageInfo.h */,
+				61F91D6F1D3F531200228185 /* BLChatMessageInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,6 +308,7 @@
 		4EF392CA1D38914200B18719 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				61F91D741D3F7C1B00228185 /* chatUtils */,
 				618979D31D3C875900FD3752 /* BLUserDefaults.h */,
 				618979D41D3C875900FD3752 /* BLUserDefaults.m */,
 			);
@@ -297,6 +318,10 @@
 		4EF392CB1D38914200B18719 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				61F91D711D3F56FB00228185 /* BLChatTableViewCell.h */,
+				61F91D721D3F56FB00228185 /* BLChatTableViewCell.m */,
+				61F91D8D1D3F92EE00228185 /* BLInputToolView.h */,
+				61F91D8E1D3F92EE00228185 /* BLInputToolView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +356,19 @@
 				618979D71D3C8F7500FD3752 /* BLHomeBLViewController.m */,
 			);
 			name = BLHome;
+			sourceTree = "<group>";
+		};
+		61F91D741D3F7C1B00228185 /* chatUtils */ = {
+			isa = PBXGroup;
+			children = (
+				61F91D751D3F7C1B00228185 /* GHEmojiCollectionView.h */,
+				61F91D761D3F7C1B00228185 /* GHEmojiCollectionView.m */,
+				61F91D771D3F7C1B00228185 /* GHEmojiView.h */,
+				61F91D781D3F7C1B00228185 /* GHEmojiView.m */,
+				61F91D791D3F7C1B00228185 /* GHInputToolView.h */,
+				61F91D7A1D3F7C1B00228185 /* GHInputToolView.m */,
+			);
+			path = chatUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,11 +509,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF392E71D38C84500B18719 /* BLLoginViewController.m in Sources */,
+				61F91D8F1D3F92EE00228185 /* BLInputToolView.m in Sources */,
+				61F91D731D3F56FB00228185 /* BLChatTableViewCell.m in Sources */,
+				61F91D861D3F7C1B00228185 /* GHEmojiView.m in Sources */,
+				61F91D871D3F7C1B00228185 /* GHInputToolView.m in Sources */,
 				4EEE900A1D3747460076A484 /* AppDelegate.mm in Sources */,
 				4EF392E21D38C36C00B18719 /* BLNavigationController.m in Sources */,
 				618979D51D3C875900FD3752 /* BLUserDefaults.m in Sources */,
 				4EF392D61D38BB3D00B18719 /* BLStartViewController.m in Sources */,
 				4EF392CE1D38923300B18719 /* BLBaseViewController.m in Sources */,
+				61F91D701D3F531200228185 /* BLChatMessageInfo.m in Sources */,
+				61F91D851D3F7C1B00228185 /* GHEmojiCollectionView.m in Sources */,
 				4EEE90071D3747460076A484 /* main.m in Sources */,
 				618979D81D3C8F7500FD3752 /* BLHomeBLViewController.m in Sources */,
 			);

@@ -174,7 +174,11 @@
     homeBLVC.connectInfo.oldVersion = YES;
     
     homeBLVC.isWatchBL = NO;
-    [self.navigationController pushViewController:homeBLVC animated:YES];
+//    [self.navigationController pushViewController:homeBLVC animated:YES];
+    
+    [self presentViewController:homeBLVC animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark ----------------------------------
