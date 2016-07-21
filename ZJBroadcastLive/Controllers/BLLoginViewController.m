@@ -76,10 +76,11 @@
     self.roomNumberTF.textAlignment = NSTextAlignmentLeft;
     self.roomNumberTF.keyboardType = UIKeyboardTypeNumberPad;
     self.roomNumberTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.roomNumberTF.layer.borderWidth = 1;
-    self.roomNumberTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
+//    self.roomNumberTF.layer.borderWidth = 1;
+//    self.roomNumberTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
 //    self.roomNumberTF.layer.cornerRadius = 20;
 //    self.roomNumberTF.layer.masksToBounds = YES;
+    self.roomNumberTF.borderStyle = UITextBorderStyleRoundedRect;
     
     
     self.nickNameTF = [[UITextField alloc]initWithFrame:CGRectMake(self.roomNumberTF.frame.origin.x, self.roomNumberTF.frame.origin.y+self.roomNumberTF.frame.size.height+15, kScreenWidth-50*2, 40)];
@@ -90,9 +91,9 @@
     self.nickNameTF.textAlignment = NSTextAlignmentLeft;
     self.nickNameTF.keyboardType = UIKeyboardTypeDefault;
     self.nickNameTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.nickNameTF.layer.borderWidth = 1;
-    self.nickNameTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
-    
+//    self.nickNameTF.layer.borderWidth = 1;
+//    self.nickNameTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
+    self.nickNameTF.borderStyle = UITextBorderStyleRoundedRect;
     
     self.watchPwdTF = [[UITextField alloc]initWithFrame:CGRectMake(self.roomNumberTF.frame.origin.x, self.nickNameTF.frame.origin.y+self.nickNameTF.frame.size.height+15, kScreenWidth-50*2, 40)];
     self.watchPwdTF.placeholder = @"口令";
@@ -101,9 +102,11 @@
     self.watchPwdTF.font = [UIFont systemFontOfSize:16];
     self.watchPwdTF.textAlignment = NSTextAlignmentLeft;
     self.watchPwdTF.keyboardType = UIKeyboardTypeDefault;
+    self.watchPwdTF.secureTextEntry = YES;
     self.watchPwdTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.watchPwdTF.layer.borderWidth = 1;
-    self.watchPwdTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
+//    self.watchPwdTF.layer.borderWidth = 1;
+//    self.watchPwdTF.layer.borderColor = [RGB(200, 200, 200) CGColor];
+    self.watchPwdTF.borderStyle = UITextBorderStyleRoundedRect;
     
     
     self.roomNumberTF.text = [BLUserDefaults roomNumber];

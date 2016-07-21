@@ -110,6 +110,13 @@
 //整体的橘黄色
 #define kOrangeColor UIColorFromRGB(0xf57d35)
 
+//中间导航区域底色
+#define kNaviBackColor RGB(80,80,80)
+//文档 聊天 问答 视图底色
+#define kShowViewBackColor RGB(120 ,120 ,120)
+//灰色字体
+#define kGrayTitleColor RGB(170 ,170 ,170)
+
 
 //存储本地地图的版本号key
 #define kCityVersionKey  @"cityVersion"
