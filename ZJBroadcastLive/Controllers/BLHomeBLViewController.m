@@ -1041,7 +1041,9 @@
     self.questionBackView.hidden = YES;
     [self.view addSubview:self.questionBackView];
     
-    self.questionTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 52)];
+    self.questionTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 52) style:UITableViewStylePlain];
+    self.questionTableView.backgroundColor = kShowViewBackColor;
+    self.questionTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.questionTableView.dataSource = self;
     self.questionTableView.delegate = self;
     [self.questionBackView addSubview:self.questionTableView];
