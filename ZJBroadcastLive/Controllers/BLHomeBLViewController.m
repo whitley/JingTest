@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "BLChatMessageInfo.h"
 #import "BLChatTableViewCell.h"
+#import "BLChatMessageCell.h"
 
 @interface BLHomeBLViewController()<GSBroadcastDelegate, GSBroadcastVideoDelegate, GSBroadcastDesktopShareDelegate, GSBroadcastAudioDelegate, GSBroadcastDocumentDelegate, GSBroadcastChatDelegate, GSBroadcastQaDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -39,25 +40,27 @@
 @property (nonatomic, strong)NSDictionary *key2fileDic;
 @property (nonatomic, strong)NSDictionary *text2keyDic;
 
+//聊天输入
+@property (nonatomic, assign)BOOL isShowChatView;//是否是 聊天视图显示(聊天 问答)
+@property (nonatomic, copy)NSString *messageContent;//聊天内容
+@property (nonatomic, strong)UIView *chatInputBackView;//聊天底部视图
+@property (nonatomic, strong)UITextView *chatInputTV;//聊天输入框
+
 //问答
 @property (nonatomic, strong)UIView * questionBackView;
 @property (nonatomic, strong)UITableView *questionTableView;
 @property (nonatomic, strong)NSMutableDictionary *questionsDic;
 @property (nonatomic, strong)NSMutableArray *questionArray;
+//问答输入
+
 @end
 @implementation BLHomeBLViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
     self.view.backgroundColor = RGB(200, 200, 200);
-    self.chatMessage = [NSMutableArray array];
-    self.questionsDic = [NSMutableDictionary dictionary];
-    self.questionArray = [NSMutableArray array];
-    NSBundle *resourceBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"RtSDK" ofType:@"bundle"]];
-    _key2fileDic = [NSDictionary dictionaryWithContentsOfFile:[resourceBundle pathForResource:@"key2file" ofType:@"plist"]];
-    _text2keyDic = [NSDictionary dictionaryWithContentsOfFile:[resourceBundle pathForResource:@"text2key" ofType:@"plist"]];
     
+    [self setupData];//设置数据
     [self checkException];//检测异常
     [self setupUI];//设置UI
     [self initBroadCastManager];//初始化直播管理者
@@ -72,6 +75,20 @@
 
 }
 
+- (void)setupData{
+    self.chatMessage = [NSMutableArray array];
+    self.questionsDic = [NSMutableDictionary dictionary];
+    self.questionArray = [NSMutableArray array];
+    NSBundle *resourceBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"RtSDK" ofType:@"bundle"]];
+    _key2fileDic = [NSDictionary dictionaryWithContentsOfFile:[resourceBundle pathForResource:@"key2file" ofType:@"plist"]];
+    _text2keyDic = [NSDictionary dictionaryWithContentsOfFile:[resourceBundle pathForResource:@"text2key" ofType:@"plist"]];
+
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
 
 #pragma mark ---------------------------------
 #pragma mark -- UI setting --
@@ -98,125 +115,6 @@
 }
 
 
-/*
- * 初始化 中间导航区域
- */
-- (void)createMiddleNaviView{
-    //中间导航区域
-    UIView * selectInfoView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight/2-40, kScreenWidth, 40)];
-    selectInfoView.backgroundColor = RGB(80, 80, 80);
-    [self.view addSubview:selectInfoView];
-    //文档按钮
-    self.docBtn = [[UIButton alloc]initWithFrame:CGRectMake(40, 0, 40, 38)];
-    self.docBtn.backgroundColor = [UIColor clearColor];
-    [self.docBtn setTitle:@"文档" forState:UIControlStateNormal];
-    [self.docBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.docBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-    [self.docBtn addTarget:self action:@selector(clickDocBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //聊天按钮
-    self.chatBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.docBtn.frame.size.width+self.docBtn.frame.origin.x+20, 0, 40, 38)];
-    self.chatBtn.backgroundColor = [UIColor clearColor];
-    [self.chatBtn setTitle:@"聊天" forState:UIControlStateNormal];
-    [self.chatBtn setTitleColor:RGB(170, 170, 170) forState:UIControlStateNormal];
-    self.chatBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.chatBtn addTarget:self action:@selector(clickChatBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //问答按钮
-    self.questionBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.chatBtn.frame.size.width+self.chatBtn.frame.origin.x+20, 0, 40, 38)];
-    self.questionBtn.backgroundColor = [UIColor clearColor];
-    [self.questionBtn setTitle:@"问答" forState:UIControlStateNormal];
-    [self.questionBtn setTitleColor:RGB(170, 170, 170) forState:UIControlStateNormal];
-    self.questionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.questionBtn addTarget:self action:@selector(clickQuestionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [selectInfoView addSubview:self.docBtn];
-    [selectInfoView addSubview:self.chatBtn];
-    [selectInfoView addSubview:self.questionBtn];
-    
-    //白线
-    self.btnlineLabel = [[UILabel alloc]initWithFrame:CGRectMake(40+2, 38, 36, 2)];
-    self.btnlineLabel.backgroundColor = [UIColor whiteColor];
-    [selectInfoView addSubview:self.btnlineLabel];
-
-    
-    UIButton * videoBtn = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth-100, 5, 70, 30)];
-    [videoBtn setTitle:@"接收视频" forState:UIControlStateNormal];
-    [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    videoBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    videoBtn.backgroundColor = RGB(235, 145, 141);
-    [videoBtn addTarget:self action:@selector(clickVideoBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [selectInfoView addSubview:videoBtn];
-    
-}
-
-/*
- * 初始化直播视图
- */
-- (void)createVideoView{
-    _originalVideoFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2 - 40);
-    
-    //直播视图
-    self.videoView = [[GSVideoView alloc]initWithFrame:_originalVideoFrame];
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleVideoViewTap:)];
-    tapGes.numberOfTapsRequired = 2;
-    [self.videoView addGestureRecognizer:tapGes];
-    self.videoView.videoViewContentMode = GSVideoViewContentModeRatioFit;
-    [self.view addSubview:self.videoView];
-    
-    
-}
-
-/*
- * 初始化文档视图
- */
-- (void)createDocView{
-    self.docView = [[GSDocView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
-    self.docView.zoomEnabled = YES;
-    self.docView.fullMode = NO;
-    self.docView.hidden = NO;
-    [self.docView setGlkBackgroundColor:200 green:200 blue:200];
-    self.docView.backgroundColor = RGB(150, 150, 150);
-    [self.view addSubview:self.docView];
-}
-
-/*
- * 初始化聊天视图
- */
-- (void)createChatView{
-    self.chatBackView = [[UIView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
-    self.chatBackView.backgroundColor = RGB(200, 200, 200);
-    self.chatBackView.hidden = YES;
-    [self.view addSubview:self.chatBackView];
-    
-    self.chatTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.chatBackView.frame.size.height - 50)];
-    self.chatTableView.dataSource = self;
-    self.chatTableView.delegate = self;
-    [self.chatBackView addSubview:self.chatTableView];
-    
-    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTableViewTap:)];
-    ges.numberOfTouchesRequired = 1;
-    [self.chatTableView addGestureRecognizer:ges];
-
-}
-/*
- * 初始化问答视图
- */
-- (void)createQuestionView{
-    self.questionBackView = [[UIView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
-    self.questionBackView.backgroundColor = RGB(200, 200, 200);
-    self.questionBackView.hidden = YES;
-    [self.view addSubview:self.questionBackView];
-    
-    self.questionTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 52)];
-    self.questionTableView.dataSource = self;
-    self.questionTableView.delegate = self;
-    [self.questionBackView addSubview:self.questionTableView];
-    
-    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTableViewTap:)];
-    ges.numberOfTouchesRequired = 1;
-    [self.questionTableView addGestureRecognizer:ges];
-}
 
 #pragma mark --------------------------------------
 #pragma mark -- UITableViewDelegate --
@@ -230,24 +128,35 @@
 {
     static NSString *identifier = @"cell";
     
-    BLChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    BLChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    if (!chatCell) {
+//        chatCell = [[BLChatTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//        chatCell.key2fileDic = _key2fileDic;
+//        chatCell.backgroundColor = kShowViewBackColor;
+//        chatCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//    BLChatMessageInfo *messageInfo = self.chatMessage[indexPath.row];
+//    [chatCell setContent:messageInfo];
+    
+    
+    BLChatMessageCell *chatCell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!chatCell) {
-        chatCell = [[BLChatTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        chatCell.key2fileDic = _key2fileDic;
-        
+        chatCell = [[BLChatMessageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        chatCell.backgroundColor = kShowViewBackColor;
+        chatCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    BLChatMessageInfo *messageInfo = self.chatMessage[indexPath.row];
-    [chatCell setContent:messageInfo];
-    
+    chatCell.messageInfo =self.chatMessage[indexPath.row];
     return chatCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *text = ((BLChatMessageInfo*)_chatMessage[indexPath.row]).message.richText;
-    int height = [self heightOfText:[self transfromString2:text] width:self.view.frame.size.width - 20 fontSize:12.f];
-    return height + 40 + 25;
+//    NSString *text = ((BLChatMessageInfo*)_chatMessage[indexPath.row]).message.richText;
+//    int height = [self heightOfText:[self transfromString2:text] width:self.view.frame.size.width - 20 fontSize:12.f];
+//    return height + 40 + 25;
+
+    return 67;
 }
 
 
@@ -286,6 +195,10 @@
     self.docView.hidden = YES;
     self.chatBackView.hidden = NO;
     self.questionBackView.hidden = YES;
+    
+    
+    self.isShowChatView = YES;//显示聊天视图
+    
 }
 
 //点击问答按钮
@@ -303,11 +216,10 @@
     self.chatBackView.hidden = YES;
     self.questionBackView.hidden = NO;
     
+    self.isShowChatView = NO;//显示问答视图
+    
 }
-//点击手势
-- (void)handleTableViewTap:(UITapGestureRecognizer*)ges{
-//    [_inputToolView endEditting];
-}
+
 
 //点击接收视频
 - (void)clickVideoBtn:(UIButton *)btn{
@@ -913,11 +825,241 @@
     return richStr;
     
 }
+#pragma mark ----------------------------------------
+#pragma mark -- UI init method --
 
+/*
+ * 初始化 中间导航区域
+ */
+- (void)createMiddleNaviView{
+    //中间导航区域
+    UIView * selectInfoView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight/2-40, kScreenWidth, 40)];
+    selectInfoView.backgroundColor = RGB(80, 80, 80);
+    [self.view addSubview:selectInfoView];
+    //文档按钮
+    self.docBtn = [[UIButton alloc]initWithFrame:CGRectMake(40, 0, 40, 38)];
+    self.docBtn.backgroundColor = [UIColor clearColor];
+    [self.docBtn setTitle:@"文档" forState:UIControlStateNormal];
+    [self.docBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.docBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    [self.docBtn addTarget:self action:@selector(clickDocBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //聊天按钮
+    self.chatBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.docBtn.frame.size.width+self.docBtn.frame.origin.x+20, 0, 40, 38)];
+    self.chatBtn.backgroundColor = [UIColor clearColor];
+    [self.chatBtn setTitle:@"聊天" forState:UIControlStateNormal];
+    [self.chatBtn setTitleColor:RGB(170, 170, 170) forState:UIControlStateNormal];
+    self.chatBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.chatBtn addTarget:self action:@selector(clickChatBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //问答按钮
+    self.questionBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.chatBtn.frame.size.width+self.chatBtn.frame.origin.x+20, 0, 40, 38)];
+    self.questionBtn.backgroundColor = [UIColor clearColor];
+    [self.questionBtn setTitle:@"问答" forState:UIControlStateNormal];
+    [self.questionBtn setTitleColor:RGB(170, 170, 170) forState:UIControlStateNormal];
+    self.questionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.questionBtn addTarget:self action:@selector(clickQuestionBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [selectInfoView addSubview:self.docBtn];
+    [selectInfoView addSubview:self.chatBtn];
+    [selectInfoView addSubview:self.questionBtn];
+    
+    //白线
+    self.btnlineLabel = [[UILabel alloc]initWithFrame:CGRectMake(40+2, 38, 36, 2)];
+    self.btnlineLabel.backgroundColor = [UIColor whiteColor];
+    [selectInfoView addSubview:self.btnlineLabel];
+    
+    
+    UIButton * videoBtn = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth-100, 5, 70, 30)];
+    [videoBtn setTitle:@"接收视频" forState:UIControlStateNormal];
+    [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    videoBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    videoBtn.backgroundColor = RGB(235, 145, 141);
+    [videoBtn addTarget:self action:@selector(clickVideoBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [selectInfoView addSubview:videoBtn];
+    
+}
 
+/*
+ * 初始化直播视图
+ */
+- (void)createVideoView{
+    _originalVideoFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2 - 40);
+    
+    //直播视图
+    self.videoView = [[GSVideoView alloc]initWithFrame:_originalVideoFrame];
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleVideoViewTap:)];
+    tapGes.numberOfTapsRequired = 2;
+    [self.videoView addGestureRecognizer:tapGes];
+    self.videoView.videoViewContentMode = GSVideoViewContentModeRatioFit;
+    [self.view addSubview:self.videoView];
+    
+    
+}
+
+/*
+ * 初始化文档视图
+ */
+- (void)createDocView{
+    self.docView = [[GSDocView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
+    self.docView.zoomEnabled = YES;
+    self.docView.fullMode = NO;
+    self.docView.hidden = NO;
+    [self.docView setGlkBackgroundColor:200 green:200 blue:200];
+    self.docView.backgroundColor = RGB(120, 120, 120);
+    [self.view addSubview:self.docView];
+}
+
+/*
+ * 初始化聊天视图
+ */
+- (void)createChatView{
+    self.chatBackView = [[UIView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
+    self.chatBackView.backgroundColor = RGB(200, 200, 200);
+    self.chatBackView.hidden = YES;
+    [self.view addSubview:self.chatBackView];
+    
+    self.chatTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.chatBackView.frame.size.height - 46) style:UITableViewStylePlain];
+    self.chatTableView.dataSource = self;
+    self.chatTableView.delegate = self;
+    self.chatTableView.backgroundColor = kShowViewBackColor;
+    self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self.chatBackView addSubview:self.chatTableView];
+    
+    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTableViewTap:)];
+    ges.numberOfTouchesRequired = 1;
+    [self.chatTableView addGestureRecognizer:ges];
+    
+    
+    //聊天输入底部视图
+    self.chatInputBackView = [[UIView alloc]initWithFrame:CGRectMake(0, self.chatBackView.frame.size.height-46, kScreenWidth, 46)];
+    self.chatInputBackView.backgroundColor = kNaviBackColor;
+    [self.chatBackView addSubview:self.chatInputBackView];
+    
+    //输入白色边框
+    UIView *inputFrameLine = [[UIView alloc]initWithFrame:CGRectMake(50, 5, kScreenWidth-50-50, 36)];
+    inputFrameLine.backgroundColor = kNaviBackColor;
+    inputFrameLine.layer.borderColor = [[UIColor whiteColor] CGColor];
+    inputFrameLine.layer.borderWidth = 1;
+    inputFrameLine.layer.cornerRadius = 16;
+    inputFrameLine.layer.masksToBounds = YES;
+    [self.chatInputBackView addSubview:inputFrameLine];
+    
+    //聊天输入框
+    self.chatInputTV = [[UITextView alloc]initWithFrame:CGRectMake(50+10, 8, kScreenWidth-50-50-10-10, 30)];
+    self.chatInputTV.textColor = RGB(220, 220, 220);
+    self.chatInputTV.font = [UIFont systemFontOfSize:14];
+    self.chatInputTV.textAlignment = NSTextAlignmentLeft;
+    self.chatInputTV.backgroundColor = kNaviBackColor;
+    self.chatInputTV.layer.cornerRadius = 6;
+    self.chatInputTV.layer.masksToBounds = YES;
+    [self.chatInputBackView addSubview:self.chatInputTV];
+    
+    //只显示自己聊天信息按钮
+    UIButton *showMeMessageBtn = [[UIButton alloc]initWithFrame:CGRectMake(5, 3, 40, 40)];
+    showMeMessageBtn.backgroundColor = kNaviBackColor;
+    [showMeMessageBtn setImage:[UIImage imageNamed:@"send_chat"] forState:UIControlStateNormal];
+    [showMeMessageBtn addTarget:self action:@selector(clickShowMeMessageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.chatInputBackView addSubview:showMeMessageBtn];
+    
+    //发送按钮
+    UIButton *sendChatMessageBtn = [[UIButton alloc]initWithFrame:CGRectMake(kScreenWidth-45, 8, 40, 30)];
+    [sendChatMessageBtn setTitle:@"发送" forState:UIControlStateNormal];
+    [sendChatMessageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    sendChatMessageBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    sendChatMessageBtn.backgroundColor = kNaviBackColor;
+    [sendChatMessageBtn addTarget:self action:@selector(clickSendChatMessageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.chatInputBackView addSubview:sendChatMessageBtn];
+    
+    
+
+}
+#pragma mark - 键盘的通知事件
+- (void)keyboardWillShow:(NSNotification *)no{
+    NSDictionary* info = [no userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.chatInputBackView.frame = CGRectMake(0, self.chatBackView.frame.size.height-kbSize.height-46, kScreenWidth, 46);
+
+    }];
+}
+
+- (void)keyboardWillHidden:(NSNotification *)no{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.chatInputBackView.frame = CGRectMake(0, self.chatBackView.frame.size.height-46, kScreenWidth, 46);
+    }];
+}
+
+//点击发送按钮
+- (void)clickSendChatMessageBtn:(UIButton *)btn{
+    [self sendMessage:self.chatInputTV.text];
+    self.chatInputTV.text = @"";
+}
+//点击只看我的消息按钮
+- (void)clickShowMeMessageBtn:(UIButton *)btn{
+
+}
+//发送消息
+- (void)sendMessage:(NSString *)content
+{
+    if (!content || [[content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"EmptyChat", @"消息为空") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"知道了") otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    
+    
+    GSChatMessage *message = [GSChatMessage new];
+//    message.text = [NSString stringWithFormat:@"<span>%@</span>", content];
+//    message.richText = [self chatString:content];
+    
+    //目前不加表情
+    message.text = content;
+    message.richText = [self chatString:content];
+    
+    // 发送公共消息
+    if ([_broadcastManager sendMessageToPublic:message]) {
+        
+        [self receiveChatMessage:message from:nil messageType:ChatMessageTypeFromMe];
+        
+    }else{
+        // 发送失败
+    }
+    
+}
+
+/*
+ * 初始化问答视图
+ */
+- (void)createQuestionView{
+    self.questionBackView = [[UIView alloc]initWithFrame:CGRectMake(0, self.videoView.frame.origin.y+self.videoView.frame.size.height+40, self.view.frame.size.width, self.view.frame.size.height/2)];
+    self.questionBackView.backgroundColor = RGB(200, 200, 200);
+    self.questionBackView.hidden = YES;
+    [self.view addSubview:self.questionBackView];
+    
+    self.questionTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 52)];
+    self.questionTableView.dataSource = self;
+    self.questionTableView.delegate = self;
+    [self.questionBackView addSubview:self.questionTableView];
+    
+    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTableViewTap:)];
+    ges.numberOfTouchesRequired = 1;
+    [self.questionTableView addGestureRecognizer:ges];
+}
 
 #pragma mark ----------------------------------------
-#pragma mark -- screenFrame method --
+#pragma mark -- screen Event method --
+
+//点击手势
+- (void)handleTableViewTap:(UITapGestureRecognizer*)ges{
+    //    [_inputToolView endEditting];
+    [self.view endEditing:YES];
+}
+
 //全屏 方法
 - (void)handleVideoViewTap:(UITapGestureRecognizer*)recognizer
 {
